@@ -1,58 +1,50 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
+
+import { ContactForm } from './ContactForm';
+import { ContactList } from './ContactList';
+import { ContactFilter } from './Filter';
 
 export class App extends Component {
   state = {
-    contacts: [],
-    name: '',
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
+  addContact = contact => {
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
+  };
 
+  addFilter = event => {
+    const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const { contacts, name } = this.state;
-    const id = nanoid();
-    contacts.push({ name: name, id: id });
+  filterContacts = () => {
+    const { filter, contacts } = this.state;
 
-    this.reset();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
   };
-
-  reset = () => {
-    this.setState({ name: '' });
-  };
-
   render() {
-    const { name, contacts } = this.state;
+    const { filter } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Name</label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            pattern="^[a-zA-Zа-яА-Я]+(([a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-            onChange={this.handleChange}
-          />
-          <button type="submit">Add contact</button>
-        </form>
-        <ul>
-          {contacts.map((contact, index) => {
-            const { id, name } = contact;
-            return (
-              <li key={id} id={id}>
-                {name}
-              </li>
-            );
-          })}
-        </ul>
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.addContact}></ContactForm>
+        <h2>Contacts</h2>
+        <ContactFilter
+          filter={filter}
+          getFilter={this.addFilter}
+        ></ContactFilter>
+        <ContactList contacts={this.filterContacts}></ContactList>
       </div>
     );
   }
