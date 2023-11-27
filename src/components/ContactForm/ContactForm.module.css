@@ -1,0 +1,25 @@
+.form {
+  border: 2px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 30px;
+  padding-bottom: 30px;
+  width: 50vw;
+}
+
+.subtitle {
+  font-size: 20px;
+}
+
+.input {
+  font-size: 16px;
+  border: 1px solid;
+  border-color: lightgrey;
+  padding: 10px;
+}
+
+.submitBtn {
+  width: 100px;
+  height: 25px;
+}
