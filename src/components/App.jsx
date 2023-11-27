@@ -28,10 +28,11 @@ export class App extends Component {
 
   filterContacts = () => {
     const { filter, contacts } = this.state;
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+    const filterContacts = contacts.filter(contact =>
+      contact.name.toUpperCase().includes(filter.toUpperCase())
     );
+
+    this.setState({ contacts: filterContacts });
   };
   render() {
     const { filter } = this.state;
@@ -44,7 +45,7 @@ export class App extends Component {
           filter={filter}
           getFilter={this.addFilter}
         ></ContactFilter>
-        <ContactList contacts={this.filterContacts}></ContactList>
+        <ContactList contacts={this.state.contacts}></ContactList>
       </div>
     );
   }
