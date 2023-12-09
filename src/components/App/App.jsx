@@ -19,7 +19,6 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    localStorage.setItem('contacts', JSON.stringify(BASE_CONTACTS));
     const localContacts = JSON.parse(localStorage.getItem('contacts'));
     this.setState({ contacts: localContacts });
   }
