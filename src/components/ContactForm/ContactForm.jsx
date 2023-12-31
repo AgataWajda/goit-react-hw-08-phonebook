@@ -1,54 +1,37 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
+
+import { addContact } from '../../redux/contactsSlice';
 import css from './ContactForm.module.css';
-import PropTypes from 'prop-types';
 
-export const ContactForm = ({ onSubmit }) => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+export const ContactForm = () => {
+  const dispatch = useDispatch();
 
-  const handleChange = event => {
-    const { name, value } = event.target;
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-      default:
-        break;
-    }
-  };
-
-  const handleSubmit = event => {
+  const pushData = event => {
     event.preventDefault();
-    const id = nanoid();
-    const contact = { id, name, number };
 
-    onSubmit(contact);
+    const contact = {
+      name: event.target.elements.name.value,
+      number: event.target.elements.number.value,
+      id: nanoid(),
+    };
 
-    reset();
-  };
+    dispatch(addContact(contact));
 
-  const reset = () => {
-    setName('');
-    setNumber('');
+    event.target.reset();
   };
 
   return (
-    <form onSubmit={handleSubmit} className={css.form}>
+    <form className={css.form} onSubmit={pushData}>
       <label>
-        <h3 className={css.subtitle}>Name</h3>
+        <h3>Name</h3>
         <input
           type="text"
           name="name"
-          value={name}
           className={css.input}
           pattern="^[a-zA-Zа-яА-Я]+(([a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          onChange={handleChange}
         />
       </label>
       <label>
@@ -56,12 +39,10 @@ export const ContactForm = ({ onSubmit }) => {
         <input
           type="tel"
           name="number"
-          value={number}
           className={css.input}
           pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          onChange={handleChange}
         />
       </label>
       <button type="submit" className={css.submitBtn}>
@@ -69,10 +50,4 @@ export const ContactForm = ({ onSubmit }) => {
       </button>
     </form>
   );
-};
-
-ContactForm.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.string,
-  onSubmit: PropTypes.func,
 };

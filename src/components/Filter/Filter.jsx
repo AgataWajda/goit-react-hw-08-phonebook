@@ -1,21 +1,10 @@
 import css from './Filter.module.css';
-import PropTypes from 'prop-types';
 
-export const ContactFilter = ({ filter, getFilter }) => {
+export const ContactFilter = () => {
   return (
     <div>
       <h3 className={css.subtitle}>Find contact by name</h3>
-      <input
-        name="filter"
-        value={filter}
-        className={css.filter}
-        onChange={getFilter}
-      ></input>
+      <input name="filter" className={css.filter}></input>
     </div>
   );
-};
-
-ContactFilter.propTypes = {
-  filter: PropTypes.string,
-  getFilter: PropTypes.func,
 };
