@@ -1,0 +1,20 @@
+form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  gap: 20px;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  width: 200px;
+  padding: 5px;
+}
+
+button {
+  width: 150px;
+}

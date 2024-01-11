@@ -1,7 +1,49 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://659176d68cbbf8afa96c2d3d.mockapi.io';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+
+const setAuthToken = token => {
+  axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
+};
+
+export const register = createAsyncThunk(
+  '/users/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.post('/users/signup', credentials);
+      setAuthToken(response.data.token);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const login = createAsyncThunk(
+  '/users/login',
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.post('/users/login', credentials);
+      setAuthToken(response.data.token);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logout = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
+  try {
+    const response = await axios.post('/users/logout');
+    setAuthToken('');
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+//STARY KOD:
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
