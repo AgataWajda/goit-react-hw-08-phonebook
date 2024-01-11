@@ -7,7 +7,7 @@ import { logout } from '../redux/operations';
 const UnauthorizedNav = () => {
   return (
     <>
-      <NavLink to="/">Home</NavLink>
+      <NavLink to="/home">Home</NavLink>
       <NavLink to="/register">Register</NavLink>
       <NavLink to="/login">Login</NavLink>
     </>
@@ -20,7 +20,7 @@ const AuthorizedNav = () => {
   const handleLoggout = () => dispath(logout());
   return (
     <>
-      <NavLink to="/">Home</NavLink>
+      <NavLink to="/home">Home</NavLink>
       <span>Welcome {username}</span>
       <NavLink to="/phonebook">Phonebook</NavLink>
       <button onClick={handleLoggout}>Loggout</button>

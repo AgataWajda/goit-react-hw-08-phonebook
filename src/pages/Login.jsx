@@ -1,16 +1,10 @@
-import { Navigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
-import { selectIsLogged } from '../redux/selectors';
 import { login } from '../redux/operations';
 
 export const Login = () => {
-  const isLoggedIn = useSelector(selectIsLogged);
   const dispath = useDispatch();
-
-  if (isLoggedIn) {
-    return <Navigate to="/phonebook"></Navigate>;
-  }
 
   const handleLogin = event => {
     event.preventDefault();
@@ -23,6 +17,9 @@ export const Login = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div>
         <form onSubmit={handleLogin}>
           <label>

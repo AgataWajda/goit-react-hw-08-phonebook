@@ -4,6 +4,7 @@ export const selectError = state => state.contacts.error;
 export const selectIsLoading = state => state.contacts.isLoading;
 export const selectIsLogged = state => state.auth.isLogged;
 export const selectUsername = state => state.auth.user.name;
+export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 const selectContacts = state => state.contacts.list;
 const selectFilter = state => state.filter;
