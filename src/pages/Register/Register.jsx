@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLogged } from '../../redux/selectors';
 import { register } from '../../redux/operations';
 
-import css from './Register.module.css';
 import { Navigate } from 'react-router-dom';
 
 export const Register = () => {
