@@ -22,7 +22,7 @@ export const ContactForm = () => {
   return (
     <form className={css.form} onSubmit={pushData}>
       <label>
-        <h3>Name</h3>
+        <h3 className={css.subtitle}>Name</h3>
         <input
           type="text"
           name="name"

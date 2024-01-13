@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  align-items: center;
+  box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.userBtn {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 5px;
+
+  background-color: #6187c0d2;
+  border-style: none;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.userBtn:hover {
+  background-color: rgb(141, 191, 193);
+  cursor: pointer;
+}

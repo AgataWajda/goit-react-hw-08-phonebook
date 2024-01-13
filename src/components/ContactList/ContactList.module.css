@@ -1,12 +1,27 @@
 .list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  font-weight: 400;
 
-  flex-direction: column;
-  gap: 18px;
   padding-top: 10px;
-  font-size: 18px;
+  font-size: 17px;
+  padding-left: 0px;
 }
 
 .deleteBtn {
   margin-left: 20px;
+  border-radius: 5px;
+  background-color: #6187c0d2;
+  border-style: none;
+  padding: 3px;
+}
+
+.deleteBtn:hover {
+  background-color: #4479ca;
+}
+
+.listItem {
+  padding-bottom: 18px;
+  margin-left: 30px;
+  padding-left: 0;
 }

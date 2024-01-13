@@ -1,0 +1,10 @@
+.conteiner {
+  display: flex;
+  padding: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tittle {
+  color: #062d66;
+}

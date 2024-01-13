@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .form__item {
@@ -27,7 +27,7 @@
 }
 
 .form__submitBtn {
-  margin-top: 10px;
+  margin-top: 15px;
   height: 30px;
   width: 100px;
   border-radius: 5px;

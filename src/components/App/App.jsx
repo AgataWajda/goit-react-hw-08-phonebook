@@ -3,23 +3,30 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
-import Layout from 'pages/Layout';
-import { selectIsRefreshing } from '../../redux/selectors';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+import Layout from 'pages/Layout/Layout';
+import { selectError, selectIsRefreshing } from '../../redux/selectors';
 import { Register } from 'pages/Register/Register';
-import { Login } from 'pages/Login';
-import { Phonebook } from 'pages/Phonebook';
+import { Login } from 'pages/Login/Login';
+import { Phonebook } from 'pages/Phonebook/Phonebook';
 import { currentUser } from '../../redux/operations';
 import { RestricterRoute } from 'components/RestrictedRoure';
 import { PrivateRoute } from 'components/PrivateRoute';
-import { Home } from 'pages/Home';
+import { Home } from 'pages/Home/Home';
 
 export const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const errorMsg = useSelector(selectError);
 
   useEffect(() => {
     dispatch(currentUser());
   }, [dispatch]);
+
+  if (errorMsg === 'Request failed with status code 400') {
+    Notify.failure('Ops... Something went wrong');
+  }
 
   if (isRefreshing) {
     return <div>Loading...</div>;

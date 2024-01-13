@@ -20,7 +20,7 @@ export const ContactList = () => {
   return (
     <ul className={css.list}>
       {contacts.map(contact => (
-        <li key={contact.id} id={contact.id}>
+        <li key={contact.id} id={contact.id} className={css.listItem}>
           <span>
             {contact.name}: {contact.number}
           </span>

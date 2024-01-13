@@ -5,6 +5,7 @@ import { contactsReducer } from './contactsSlice';
 import { filterReducer } from './filterSlice';
 import { authReducer } from './authSlice';
 import persistStore from 'redux-persist/es/persistStore';
+import { siteMenuReducer } from './siteMenuSlice';
 
 const authPersistCfg = {
   key: 'auth',
@@ -17,6 +18,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistCfg, authReducer),
     contacts: contactsReducer,
     filter: filterReducer,
+    siteMenu: siteMenuReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

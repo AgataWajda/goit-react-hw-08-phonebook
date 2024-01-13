@@ -1,0 +1,34 @@
+.siteMenu {
+  position: absolute;
+  top: 90px;
+  width: 300px;
+  height: 200px;
+  right: 0px;
+  background-color: rgba(139, 139, 139, 0.422);
+  border-radius: 5px;
+  box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logoutBtn {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(141, 191, 193);
+  border-style: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.logoutBtn:hover {
+  background-color: #6187c0d2;
+  cursor: pointer;
+}
+
+.mail {
+  font-size: 16px;
+  font-weight: 500;
+}
